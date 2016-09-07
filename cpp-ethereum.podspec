@@ -5,7 +5,7 @@ Pod::Spec.new do |spec|
   spec.authors = "The Ethereum C++ Authors"
   spec.license = { type: "GPLv3", file: "LICENSE" }
 
-  spec.version = "1.4.pre.0"
+  spec.version = "1.4.pre.1"
   spec.source = {
       git: 'https://github.com/cpp-ethereum-ios/cpp-ethereum.git',
       tag: "v#{spec.version}"
@@ -38,7 +38,7 @@ Pod::Spec.new do |spec|
       subspec.dependency 'cpp-ethereum/libwebthree'
       subspec.dependency 'cpp-ethereum/libweb3jsonrpc'
       subspec.dependency 'cpp-ethereum/ethminer'
-      subspec.source_files = "eth/**.{cpp,h}"
+      subspec.source_files = "eth/*.{cpp,h}"
       subspec.compiler_flags = '-DETH_JSONRPC'
       subspec.header_dir = 'eth'
   end
@@ -64,8 +64,10 @@ Pod::Spec.new do |spec|
       subspec.dependency 'cpp-ethereum/libethcore'
       subspec.dependency 'cpp-ethereum/libwhisper'
       subspec.dependency 'cpp-ethereum/libethashseal'
-      subspec.source_files = 'libwebthree/*.{cpp,h}'
+      subspec.source_files = 'libwebthree/*.{cpp,h}', 'libwebthree/libexecstream/*.{cpp,h}'
+      subspec.preserve_path = 'libwebthree/libexecstream/posix'
       subspec.header_dir = 'libwebthree'
+      subspec.header_mappings_dir = 'libwebthree'
   end
 
   spec.subspec 'libwhisper' do |subspec|
@@ -107,7 +109,7 @@ Pod::Spec.new do |spec|
       subspec.dependency 'cpp-ethereum/libdevcrypto'
       subspec.dependency 'cpp-ethereum/libevmcore'
       subspec.dependency 'cpp-ethereum/libp2p'
-      subspec.source_files = "{libethereum,libethcore,libevm}/**.{cpp,h}"
+      subspec.source_files = "{libethereum,libethcore,libevm}/*.{cpp,h}"
       subspec.exclude_files = "libevm/{JitVM,SmartVM}.{cpp,h}"
       subspec.header_mappings_dir = '.'
   end
@@ -121,7 +123,7 @@ Pod::Spec.new do |spec|
 
   spec.subspec 'libevmcore' do |subspec|
       subspec.dependency 'cpp-ethereum/libdevcore'
-      subspec.source_files = 'libevmcore/**.{cpp,h}'
+      subspec.source_files = 'libevmcore/*.{cpp,h}'
       subspec.header_dir = 'libevmcore'
   end
 
@@ -129,23 +131,23 @@ Pod::Spec.new do |spec|
       subspec.dependency 'cpp-ethereum/libdevcore'
       subspec.dependency 'cpp-ethereum/libscrypt'
       subspec.dependency 'cpp-ethereum/json_spirit'
-      subspec.source_files = "libdevcrypto/**.{cpp,h}"
+      subspec.source_files = "libdevcrypto/*.{cpp,h}"
       subspec.header_dir = "libdevcrypto"
   end
 
   spec.subspec 'libdevcore' do |subspec|
       subspec.dependency 'cpp-ethereum/buildinfo'
-      subspec.source_files = "libdevcore/**.{cpp,h}"
+      subspec.source_files = "libdevcore/*.{cpp,h}"
       subspec.header_dir = "libdevcore"
   end
 
   spec.subspec 'libscrypt' do |subspec|
-      subspec.source_files = "utils/libscrypt/**.{c,h}"
+      subspec.source_files = "utils/libscrypt/*.{c,h}"
       subspec.header_dir = "libscrypt"
   end
 
   spec.subspec 'json_spirit' do |subspec|
-      subspec.source_files = "utils/json_spirit/**.{cpp,h}"
+      subspec.source_files = "utils/json_spirit/*.{cpp,h}"
       subspec.header_dir = "json_spirit"
   end
 
