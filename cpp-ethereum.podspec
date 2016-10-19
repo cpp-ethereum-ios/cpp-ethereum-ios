@@ -5,7 +5,7 @@ Pod::Spec.new do |spec|
   spec.authors = "The Ethereum C++ Authors"
   spec.license = { type: "GPLv3", file: "LICENSE" }
 
-  spec.version = "1.4.pre.1"
+  spec.version = "1.4.pre.2"
   spec.source = {
       git: 'https://github.com/cpp-ethereum-ios/cpp-ethereum.git',
       tag: "v#{spec.version}"
@@ -86,7 +86,7 @@ Pod::Spec.new do |spec|
   end
 
   spec.subspec 'libethash' do |subspec|
-      subspec.source_files = "libethash/*.{cpp,h}"
+      subspec.source_files = "libethash/*.{c,cpp,h}"
       subspec.header_dir = 'libethash'
   end
 
