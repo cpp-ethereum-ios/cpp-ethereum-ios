@@ -5,7 +5,7 @@ Pod::Spec.new do |spec|
   spec.authors = "The Ethereum C++ Authors"
   spec.license = { type: "GPLv3", file: "LICENSE" }
 
-  spec.version = "1.4.pre.3"
+  spec.version = "1.4.pre.4"
   spec.source = {
       git: 'https://github.com/cpp-ethereum-ios/cpp-ethereum.git',
       tag: "v#{spec.version}"
@@ -153,24 +153,30 @@ Pod::Spec.new do |spec|
   end
 
   spec.subspec 'buildinfo' do |subspec|
-      spec.prepare_command = <<-CMD
-        mkdir -p cpp-ethereum
-        S0='s/@PROJECT_VERSION@/#{spec.version}/g'
-        S1="s/@ETH_COMMIT_HASH@/$(git rev-parse v#{spec.version})/g"
-        S2='s/@ETH_CLEAN_REPO@/1/g'
-        S3='s/@ETH_BUILD_TYPE@/CocoaPods/g'
-        S4='s/@ETH_BUILD_OS@/Darwin/g'
-        S5='s/@ETH_BUILD_COMPILER@/appleclang/g'
-        S6='s/@ETH_BUILD_JIT_MODE@/Interpreter/g'
-        S7='s/@ETH_BUILD_PLATFORM@/Darwin\\/appleclang\\/Interpreter/g'
-        S8='s/@ETH_BUILD_NUMBER@/65535/g'
-        S9='s/@ETH_VERSION_SUFFIX@//g'
-        sed "$S0;$S1;$S2;$S3;$S4;$S5;$S6;$S7;$S8;$S9" \
-            cmake/templates/BuildInfo.h.in > cpp-ethereum/BuildInfo.h
-      CMD
-
       subspec.source_files = "cpp-ethereum/BuildInfo.h"
       subspec.header_dir = "cpp-ethereum"
   end
+
+  spec.prepare_command = <<-CMD
+
+    # Replace main() with eth_main()
+    sed -i '' 's/main(/eth_main(/g' eth/main.cpp
+
+    # Create BuildInfo.h
+    mkdir -p cpp-ethereum
+    S0='s/@PROJECT_VERSION@/#{spec.version}/g'
+    S1="s/@ETH_COMMIT_HASH@/$(git rev-parse v#{spec.version})/g"
+    S2='s/@ETH_CLEAN_REPO@/1/g'
+    S3='s/@ETH_BUILD_TYPE@/CocoaPods/g'
+    S4='s/@ETH_BUILD_OS@/Darwin/g'
+    S5='s/@ETH_BUILD_COMPILER@/appleclang/g'
+    S6='s/@ETH_BUILD_JIT_MODE@/Interpreter/g'
+    S7='s/@ETH_BUILD_PLATFORM@/Darwin\\/appleclang\\/Interpreter/g'
+    S8='s/@ETH_BUILD_NUMBER@/65535/g'
+    S9='s/@ETH_VERSION_SUFFIX@//g'
+    sed "$S0;$S1;$S2;$S3;$S4;$S5;$S6;$S7;$S8;$S9" \
+        cmake/templates/BuildInfo.h.in > cpp-ethereum/BuildInfo.h
+
+  CMD
 
 end
