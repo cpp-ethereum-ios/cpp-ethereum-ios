@@ -5,7 +5,7 @@ Pod::Spec.new do |spec|
   spec.authors = "The Ethereum C++ Authors"
   spec.license = { type: "GPLv3", file: "LICENSE" }
 
-  spec.version = "1.4.pre.5"
+  spec.version = "1.4.pre.6"
   spec.source = {
       git: 'https://github.com/cpp-ethereum-ios/cpp-ethereum.git',
       tag: "v#{spec.version}"
@@ -16,11 +16,12 @@ Pod::Spec.new do |spec|
 
   # TODO: move dependencies into subspecs
   # TODO: ensure that all dependencies can be dynamically linked
+  # TODO: enable bitcode on all dependencies
   # TODO: remove/ignore all compiler warnings
   # TODO: support binary versions in the podspecs
 
   spec.dependency 'Apple-Boost', '~> 1.6'
-  spec.dependency 'Cryptopp', '~> 5.7.pre'
+  spec.dependency 'Cryptopp', '~> 5.6'
   spec.dependency 'GMP-iOS', '~> 6.1'
   spec.dependency 'JsonCpp', '~> 1.7'
   spec.dependency 'leveldb', '~> 1.18'
