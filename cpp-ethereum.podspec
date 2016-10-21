@@ -5,7 +5,7 @@ Pod::Spec.new do |spec|
   spec.authors = "The Ethereum C++ Authors"
   spec.license = { type: "GPLv3", file: "LICENSE" }
 
-  spec.version = "1.4.pre.4"
+  spec.version = "1.4.pre.5"
   spec.source = {
       git: 'https://github.com/cpp-ethereum-ios/cpp-ethereum.git',
       tag: "v#{spec.version}"
