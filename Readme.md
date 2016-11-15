@@ -31,6 +31,8 @@ You can then add a dependency on the cpp-ethereum pod:
 
 By running `pod update` you can download C++ ethereum and its dependencies. This can take a long time because many dependencies are being compiled.
 
+Please note that you cannot use frameworks currently. So please leave out the `use_frameworks!` statement from your Podfile.
+
 ### API
 
 You can invoke the eth_main method from C++. It takes the same command line options as the ‘eth’ binary. For example:
