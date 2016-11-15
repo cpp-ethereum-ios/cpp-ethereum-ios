@@ -3,6 +3,8 @@ Ethereum for iOS
 
 Unofficial port of [C++ Ethereum][1] to iOS.
 
+![Screenshot](cpp-ethereum-ios.png)
+
 ### Limitations
 
 Do not expect a fully functional Ethereum client on iOS as of yet. There are still quite a few issues to be solved before you can use it in an app for the app store. But it’s a start :)
