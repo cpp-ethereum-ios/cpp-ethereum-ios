@@ -5,13 +5,17 @@ Unofficial port of [C++ Ethereum][1] to iOS.
 
 ![Screenshot](cpp-ethereum-ios.png)
 
+### This project is no longer maintained
+
+We have stopped working on this project when the news broke that the C++ Ethereum developers were [unable to relicense the code](http://www.ibtimes.co.uk/hyperledger-project-reflects-blockchain-politics-1603381). This means that C++ Ethereum is only available through the GPLv3 license, which is incompatible with Apple's App Store. In other words: you can not make an app that includes C++ Ethereum an put it in the app store.
+
 ### Limitations
 
-Do not expect a fully functional Ethereum client on iOS as of yet. There are still quite a few issues to be solved before you can use it in an app for the app store. But it’s a start :)
+Do not expect a fully functional Ethereum client on iOS.
 
 Known limitations:
 
-* C++ Ethereum is currently GPLv3 licensed, which is [incompatible][5] with Apple’s terms for the App Store. This is [being addressed][6] by the C++ Ethereum developers.
+* C++ Ethereum is currently GPLv3 licensed, which is [incompatible][5] with Apple’s terms for the App Store.
 * C++ Ethereum will download the whole blockchain, which is probably not a good idea on a mobile device. Light client support [is planned][7] but not yet available.
 * It will report connection errors with all peers when run on the simulator.
 * It crashes immediately when run on a real device because it cannot write to the .ethereum directory.
